@@ -1,9 +1,0 @@
-Starting... 
-2023-09-10 01:36:53.722116: Using splits from existing split file: /zhangzengmin/FLARE23-main/dataset/nnUNet_preprocessed/Task006_Test/splits_final.pkl 
-2023-09-10 01:36:53.724430: The split file contains 5 splits. 
-2023-09-10 01:36:53.725363: Desired fold for training: 1 
-2023-09-10 01:36:53.726309: This split has 4 training and 1 validation cases. 
-2023-09-10 01:36:53.935390: TRAINING KEYS:
- odict_keys(['train_0001', 'train_0002', 'train_0003', 'train_0004']) 
-2023-09-10 01:36:53.936957: VALIDATION KEYS:
- odict_keys(['train_0006']) 
