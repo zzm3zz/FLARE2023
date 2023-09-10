@@ -1,6 +1,8 @@
 # Solution of Team zzm3zz for FLARE23 Challenge
 **A Semi-Supervised Abdominal Multi-Organ Pan-Cancer Segmentation Framework with Knowledge Distillation and Multi-Label Fusion** \
 *Zengmin Zhang Xiaomeng Duan Yanjun Peng Zhengyu Li* \
+![Our framework overview](document/framework.png)
+
 
 Built upon [MIC-DKFZ/nnUNet](https://github.com/MIC-DKFZ/nnUNet), this repository provides the solution of team zzm3zz for [MICCAI FLARE23](https://codalab.lisn.upsaclay.fr/competitions/12239#learn_the_details-overview) Challenge. The details of our method are described in our [paper](https://openreview.net/forum?id=PLFBzKnjOt). 
 
