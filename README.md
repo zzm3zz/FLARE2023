@@ -25,9 +25,7 @@ nnUNet_plan_and_preprocess -t 9 -pl2d ExperimentPlanner2D_Attention -pl3d None
 ```
 ### 1.3. Training Teacher Model Attention nnUNet by all fold 
 ```
-do
 nnUNet_train 2d nnUNetTrainerV2_Attention 9 all -p nnUNetPlansAttention
-done
 ```
 ### 1.5. Generate Pseudo Labels for missing tumor annotations Data
 ```
