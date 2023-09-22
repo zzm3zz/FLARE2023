@@ -55,19 +55,19 @@ nnUNet_plan_and_preprocess -t 9 -pl2d ExperimentPlanner2D_Attention -pl3d None
 nnUNet_train 2d nnUNetTrainerV2_Attention 9 all -p nnUNetPlansAttention
 ```
 
-### 1.2 Generate Pseudo Labels for missing tumor annotations Data
+#### 1.2 Generate Pseudo Labels for missing tumor annotations Data
 ```
 nnUNet_predict -i INPUTS_FOLDER -o OUTPUTS_FOLDER  -t 9  -tr nnUNetTrainerV2_Attention  -m 2d  -p nnUNetPlansAttention  --disable_tta 
 ```
 
 ### 2. Mutil-Label_Fusion
 
-### 2.1 Fuse partial labels and tumor pseudo-labels
+#### 2.1 Fuse partial labels and tumor pseudo-labels
 ```
 run part_tumor_organ_fuse.py
 ```
 
-### 2.2 Fuse organs pseudo-labels
+#### 2.2 Fuse organs pseudo-labels
 ```
 run tumor_organs_fuse.py
 ```
@@ -75,17 +75,17 @@ run tumor_organs_fuse.py
 
 ### 3. Train Student Model Small nnU-Net 
 
-### 3.1. Conduct automatic preprocessing using nnU-Net
+#### 3.1. Conduct automatic preprocessing using nnU-Net
 Here we use the plan designed for small nnUNet.
 ```
 nnUNet_plan_and_preprocess -t 23 -pl3d ExperimentPlanner3D_FLARE22Small -pl2d None
 ```
-3.2. Train small nnUNet on all training data
+#### 3.2. Train small nnUNet on all training data
 ```
 nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 23 all -p nnUNetPlansFLARE22Small
 ```
 
-4. Do Efficient Inference with Small nnU-Net
+### 4. Do Efficient Inference with Small nnU-Net
 ```
 nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
  -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
@@ -93,16 +93,16 @@ nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Sm
 
 ## Inference
 
-1. To infer the testing cases, run this command:
+### 1. To infer the testing cases, run this command:
 
 ```python
 nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
  -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
 ```
 
-2. [Colab](https://colab.research.google.com/) jupyter notebook
+### 2. [Colab](https://colab.research.google.com/) jupyter notebook
 
-3. Docker containers on [DockerHub](https://hub.docker.com/)
+### 3. Docker containers on [DockerHub](https://hub.docker.com/)
 
 ```bash
 docker container run --gpus "device=0" -m 28G --name algorithm --rm -v $PWD/CellSeg_Test/:/workspace/inputs/ -v $PWD/algorithm_results/:/workspace/outputs/ algorithm:latest /bin/bash -c "sh predict.sh"
