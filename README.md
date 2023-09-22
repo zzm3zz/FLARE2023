@@ -48,31 +48,34 @@ nnUNet_plan_and_preprocess -t 9 -pl2d ExperimentPlanner2D_Attention -pl3d None
 
 ## Training
 
-1. Train Teacher Model Attention nnU-Net for tumor pseudo-label:
-1.1 Training Teacher Model Attention nnUNet by all fold 
+### 1 Train Teacher Model Attention nnU-Net for tumor pseudo-label
+
+### 1.1 Training Teacher Model Attention nnUNet by all fold 
 ```
 nnUNet_train 2d nnUNetTrainerV2_Attention 9 all -p nnUNetPlansAttention
 ```
 
-1.2 Generate Pseudo Labels for missing tumor annotations Data
+### 1.2 Generate Pseudo Labels for missing tumor annotations Data
 ```
 nnUNet_predict -i INPUTS_FOLDER -o OUTPUTS_FOLDER  -t 9  -tr nnUNetTrainerV2_Attention  -m 2d  -p nnUNetPlansAttention  --disable_tta 
 ```
 
-2. Mutil-Label_Fusion:
-2.1 Fuse partial labels and tumor pseudo-labels
+### 2. Mutil-Label_Fusion
+
+### 2.1 Fuse partial labels and tumor pseudo-labels
 ```
 run part_tumor_organ_fuse.py
 ```
 
-2.2 Fuse organs pseudo-labels
+### 2.2 Fuse organs pseudo-labels
 ```
 run tumor_organs_fuse.py
 ```
 
 
-3. Train Student Model Small nnU-Net 
-3.1. Conduct automatic preprocessing using nnU-Net
+### 3. Train Student Model Small nnU-Net 
+
+### 3.1. Conduct automatic preprocessing using nnU-Net
 Here we use the plan designed for small nnUNet.
 ```
 nnUNet_plan_and_preprocess -t 23 -pl3d ExperimentPlanner3D_FLARE22Small -pl2d None
