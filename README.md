@@ -31,11 +31,11 @@ pip install -r requirements.txt
 
 A brief description of the preprocessing method
 
-- cropping
+- cropping:
 Follow the default method of nnU-Net
-- intensity normalization
+- intensity normalization:
 Follow the default method of nnU-Net
-- resampling
+- resampling:
 Attention nnU-Net: [0.8164, 0.8164]
 Small nnU-Net: [4, 1.2, 1.2]  
 
