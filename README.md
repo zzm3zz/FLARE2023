@@ -50,7 +50,7 @@ nnUNet_plan_and_preprocess -t 9 -pl2d ExperimentPlanner2D_Attention -pl3d None
 
 ### 1 Train Teacher Model Attention nnU-Net for tumor pseudo-label
 
-### 1.1 Training Teacher Model Attention nnUNet by all fold 
+#### 1.1 Training Teacher Model Attention nnUNet by all fold 
 ```
 nnUNet_train 2d nnUNetTrainerV2_Attention 9 all -p nnUNetPlansAttention
 ```
