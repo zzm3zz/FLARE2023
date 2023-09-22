@@ -82,14 +82,11 @@ nnUNet_plan_and_preprocess -t 23 -pl3d ExperimentPlanner3D_FLARE22Small -pl2d No
 nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 23 all -p nnUNetPlansFLARE22Small
 ```
 
-## 4. Do Efficient Inference with Small nnUNet
-We modify a lot of parts of nnunet source code for efficiency. Please make sure the code backup is done and then copy the whole repo to your nnunet environment.
+4. Do Efficient Inference with Small nnU-Net
 ```
 nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
  -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
-
-3. [Colab](https://colab.research.google.com/) jupyter notebook
-
+```
 
 ## Inference
 
