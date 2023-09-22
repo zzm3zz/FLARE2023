@@ -32,6 +32,7 @@ pip install -r requirements.txt
 A brief description of the preprocessing method
 
 - cropping:
+  
 Follow the default method of nnU-Net
 - intensity normalization:
 Follow the default method of nnU-Net
@@ -78,17 +79,11 @@ run tumor_organs_fuse.py
 #### 3.1. Conduct automatic preprocessing using nnU-Net
 Here we use the plan designed for small nnUNet.
 ```
-nnUNet_plan_and_preprocess -t 23 -pl3d ExperimentPlanner3D_FLARE22Small -pl2d None
+nnUNet_plan_and_preprocess -t 6 -pl3d ExperimentPlanner3D_FLARE22Small -pl2d None
 ```
 #### 3.2. Train small nnUNet on all training data
 ```
-nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 23 all -p nnUNetPlansFLARE22Small
-```
-
-### 4. Do Efficient Inference with Small nnU-Net
-```
-nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
- -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
+nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 6 all -p nnUNetPlansFLARE22Small
 ```
 
 ## Inference
@@ -96,7 +91,7 @@ nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Sm
 ### 1. To infer the testing cases, run this command:
 
 ```python
-nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 23  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
+nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 6  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
  -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
 ```
 
