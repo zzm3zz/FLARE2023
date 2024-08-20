@@ -127,5 +127,18 @@ Our method achieves the following performance on [FLARE23: Fast, Low-resource, a
 > We thank the contributors of public datasets. 
 
 
+## Citation
+If you use this code for your research, please cite our paper:
+
+```
+@incollection{zhang2023semi,
+  title={A Semi-supervised Abdominal Multi-organ Pan-Cancer Segmentation Framework with Knowledge Distillation and Multi-label Fusion},
+  author={Zhang, Zengmin and Duan, Xiaomeng and Peng, Yanjun and Li, Zhengyu},
+  booktitle={MICCAI Challenge on Fast and Low-Resource Semi-supervised Abdominal Organ Segmentation},
+  pages={346--361},
+  year={2023},
+  publisher={Springer}
+}
+```
 
 
