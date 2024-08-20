@@ -90,39 +90,25 @@ nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 6 all -p nnUNetPlansFLARE22S
 
 ## Inference
 
-### You can download our pretrained models Here:
-* [Predict](https://pan.baidu.com/s/1M05wWOwW1CGESvJinQpZww?pwd=8bgt)
+### 1. You can download our pretrained models here:
+* [Weight](https://pan.baidu.com/s/1M05wWOwW1CGESvJinQpZww?pwd=8bgt)
 
-### We build our docker under Ubuntu. You can build docker with command below, the pwd is ```/*******/flare23/docker```.
-```
-docker build -t zzm3zz
-```
-To save the docker image
-```
-docker save zzm3zz | gzip -c > zzm3zz.tar.gz
-```
-To load the docker
-```
-docker load -i zzm3zz.tar.gz
-```
-Also, you can download [our docker image](https://registry.hub.docker.com/r/zhangzengmin/zzm3zz), with extraction code u12q. 
-The other details are displayed on the [FLARE23 Official website.](https://codalab.lisn.upsaclay.fr/competitions/12239#learn_the_details-testing).
-
-### 1. To infer the testing cases, run this command:
+### 2. To infer the testing cases, run this command:
 
 ```python
 nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 6  -p nnUNetPlansFLARE22Small   -m 3d_fullres \
  -tr nnUNetTrainerV2_FLARE_Small  -f all  --mode fastest --disable_tta
 ```
 
-### 2. [Colab](https://colab.research.google.com/) jupyter notebook
+### 3. [Colab](https://colab.research.google.com/) jupyter notebook
 
-### 3. Docker containers on [DockerHub](https://hub.docker.com/r/zhangzengmin/zzm3zz/tags)
+### 4. Docker containers on [DockerHub](https://hub.docker.com/r/zhangzengmin/zzm3zz/tags)
 
 ```bash
-docker container run --gpus "device=0" -m 28G --name algorithm --rm -v $PWD/CellSeg_Test/:/workspace/inputs/ -v $PWD/algorithm_results/:/workspace/outputs/ algorithm:latest /bin/bash -c "sh predict.sh"
+docker load -i zzm3zz.tar.gz
 ```
-
+docker container run --gpus "device=1" -m 28G --name zzm3zz --rm -v $PWD/FLARE23_Test/:/workspace/inputs/ -v $PWD/zzm3zz_outputs/:/workspace/outputs/ zzm3zz:latest /bin/bash -c "sh predict.sh"
+```
 ## Evaluation
 
 To compute the evaluation metrics, run:
