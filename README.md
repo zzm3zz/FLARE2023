@@ -90,6 +90,24 @@ nnUNet_train 3d_fullres nnUNetTrainerV2_FLARE_Small 6 all -p nnUNetPlansFLARE22S
 
 ## Inference
 
+### You can download our pretrained models Here:
+* [Predict](https://pan.baidu.com/s/1M05wWOwW1CGESvJinQpZww?pwd=8bgt)
+
+### We build our docker under Ubuntu. You can build docker with command below, the pwd is ```/*******/flare23/docker```.
+```
+docker build -t zzm3zz
+```
+To save the docker image
+```
+docker save zzm3zz | gzip -c > zzm3zz.tar.gz
+```
+To load the docker
+```
+docker load -i zzm3zz.tar.gz
+```
+Also, you can download [our docker image](https://registry.hub.docker.com/r/zhangzengmin/zzm3zz), with extraction code u12q. 
+The other details are displayed on the [FLARE23 Official website.](https://codalab.lisn.upsaclay.fr/competitions/12239#learn_the_details-testing).
+
 ### 1. To infer the testing cases, run this command:
 
 ```python
