@@ -107,8 +107,11 @@ nnUNet_predict -i INPUT_FOLDER  -o OUTPUT_FOLDER  -t 6  -p nnUNetPlansFLARE22Sma
 ```bash
 docker load -i zzm3zz.tar.gz
 ```
+
+```
 docker container run --gpus "device=1" -m 28G --name zzm3zz --rm -v $PWD/FLARE23_Test/:/workspace/inputs/ -v $PWD/zzm3zz_outputs/:/workspace/outputs/ zzm3zz:latest /bin/bash -c "sh predict.sh"
 ```
+
 ## Evaluation
 
 To compute the evaluation metrics, run:
